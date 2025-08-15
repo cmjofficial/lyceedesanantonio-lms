@@ -92,6 +92,51 @@
       margin-bottom: 0.0rem;
     }
 
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 1000; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 200%; 
+      background-color: rgba(0,0,0,0.6); 
+      padding-top: 50px;
+    }
+
+    .modal-content {
+      background: #fff;
+      margin: auto;
+      padding: 50px;
+      border-radius: 10px;
+      width: 2000;
+      max-width: 1000px;
+    }
+
+    .closeBtn {
+      float: right;
+      font-size: 22px;
+      cursor: pointer;
+      color: #aaa;
+    }
+
+    .closeBtn:hover {
+      color: #000;
+    }
+
+    #proceedBtn {
+      background-color: #0a0aae;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #proceedBtn:hover {
+      background-color: #06067c;
+    }
+
     .page-title {
       text-align: center;
       padding: 1.5rem 1rem 0.5rem;
@@ -299,6 +344,34 @@
     <button onclick="enterPortal()">Continue</button>
   </div>
 
+  <!-- Guide Pop-up Modal -->
+  <div id="guideModal" class="modal">
+    <div class="modal-content">
+      <span class="closeBtn">&times;</span>
+      <h2 style="text-align: center;">Guide to Using the Portal / Gabay sa Paggamit ng Portal</h2>
+      <p style="color: #333">This portal provides access to learning modules from Grades 1 to 10. Please select a grade level above to explore the available subjects and materials.
+
+Ang portal na ito ay nagbibigay ng access sa mga learning modules mula Grade 1 hanggang Grade 10. Pindutin ang isang grade level sa itaas upang simulan ang pag-explore ng mga asignatura at materyales.</p>
+      <p><strong>How to Use / Paano Gamitin</strong></p>
+<ul>
+        <li>Click on a grade level to view the subjects offered.</li>
+        <span style="opacity: 0.7;"> <em>(Pindutin ang paksa upang makita ang maikling paglalarawan ng aralin.)</em></span>
+        <li>Use the <strong>"View File"</strong> button to open the learning module directly in your browser.</li>
+        <span style="opacity: 0.7;"> <em>(Pindutin ang <strong>"View File"</strong> upang direktang mabuksan ang module sa iyong browser.)</em></span>
+        <li>Use the <strong>"Download File"</strong> button to save the module for offline use.</li>
+        <span style="opacity: 0.7;"> <em>(Pindutin ang <strong>"Download File"</strong> upang mai-save ang module para magamit kahit walang internet.)</em></span>
+        <ul style="list-style: none;"></ul>
+        <li>Make sure your internet connection is stable for smooth viewing.</li>
+        <span style="opacity: 0.7;"> <em>(Siguraduhing maayos ang koneksyon sa internet para hindi mag-lag ang pag-access ng mga modules.)</em></span>
+        <li>For technical assistance, contact your school’s IT support.</li>
+        <span style="opacity: 0.7;"> <em>(Para sa teknikal na tulong, makipag-ugnayan sa IT support ng inyong paaralan.)</em></span>
+      </ul>
+    <div style="text-align: right;">
+      <button id="proceedBtn">I Understand</button>
+    </div>
+    </div>
+  </div>
+
   <div class="dashboard-wrapper">
 
     <header>
@@ -325,28 +398,17 @@
       <a onclick="showGrade('grade10')">Grade 10</a>
     </nav>
 
-    <div id="intro-description" style="padding: 4rem; text-align: center; color: #0607b2;">
-      <h2>Guide to Using the Portal / Gabay sa Paggamit ng Portal</h2>
-      <p style="color: #333">This portal provides access to learning modules from Grades 1 to 10. Please select a grade level above to explore the available subjects and materials.
-
-Ang portal na ito ay nagbibigay ng access sa mga learning modules mula Grade 1 hanggang Grade 10. Pindutin ang isang grade level sa itaas upang simulan ang pag-explore ng mga asignatura at materyales.</p>
-      <p><strong>How to Use / Paano Gamitin</strong></p>
-      <ul style="list-style: none; padding: 0; max-width: 600px; margin: auto; text-align: centerleft; color: #333">
-        <li>• Click on a grade level to view the subjects offered.</li>
-        <span style="opacity: 0.8;"> <em>(Pindutin ang paksa upang makita ang maikling paglalarawan ng aralin.)</em></span>
-        <li>• Use the <strong>"View File"</strong> button to open the learning module directly in your browser.</li>
-        <span style="opacity: 0.8;"> <em>(Pindutin ang <strong>"View File"</strong> upang direktang mabuksan ang module sa iyong browser.)</em></span>
-        <li>• Use the <strong>"Download File"</strong> button to save the module for offline use.</li>
-        <span style="opacity: 0.8;"> <em>(Pindutin ang <strong>"Download File"</strong> upang mai-save ang module para magamit kahit walang internet.)</em></span>
-        <p style="color:#0607b2"><strong>How to Use / Paano Gamitin</strong></p>
-        <ul style="list-style: none; padding: 0; max-width: 600px; margin: auto; text-align: center;"></ul>
-        <li>• Make sure your internet connection is stable for smooth viewing.</li>
-        <span style="opacity: 0.8;"> <em>(Siguraduhing maayos ang koneksyon sa internet para hindi mag-lag ang pag-access ng mga modules.)</em></span>
-        <li>• For technical assistance, contact your school’s IT support.</li>
-        <span style="opacity: 0.8;"> <em>(Para sa teknikal na tulong, makipag-ugnayan sa IT support ng inyong paaralan.)</em></span>
-      </ul>
+    <div id="intro-description" style="padding: 4rem; text-align: center; color: #0607b2; font-style: inherit; font-size: 50px; font-family: sans-serif;">
+      <h2 style="animation: blinkText 2s infinite;">WELCOME, LYCEEANS!</h2>
+      <style>
+        @keyframes blinkText {
+          0% { opacity: 2;}
+          50% { opacity: 0;}
+          100% { opacity: 2;}
+      }
+      </style>
     </div>
-    
+
                <!-- GRADE 1 SUBJECT AREA -->
 
     <section id="grade1" class="grade-section">
@@ -1726,8 +1788,27 @@ Ang portal na ito ay nagbibigay ng access sa mga learning modules mula Grade 1 h
       document.querySelector('.front-page').style.display = 'none';
       document.querySelector('header').style.display = 'block';
       document.querySelector('.dashboard-wrapper').style.display = 'block';
-    }
 
+      document.getElementById("guideModal").style.display = "block";
+}
+
+      // Close modal via "X"
+      document.querySelector(".closeBtn").onclick = function() {
+        document.getElementById("guideModal").style.display = "none";
+      }
+
+      // Proceed button - just close modal, no redirect
+      document.getElementById("proceedBtn").onclick = function() {
+        document.getElementById("guideModal").style.display = "none";
+      }
+
+      // Close modal if clicking outside content
+      window.onclick = function(event) {
+        if (event.target == document.getElementById("guideModal")) {
+          document.getElementById("guideModal").style.display = "none";
+        }
+      }
+    
     function showGrade(gradeId) {
       document.querySelectorAll('.grade-section').forEach(section => {
         section.classList.remove('active');
@@ -1786,11 +1867,3 @@ Ang portal na ito ay nagbibigay ng access sa mga learning modules mula Grade 1 h
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
