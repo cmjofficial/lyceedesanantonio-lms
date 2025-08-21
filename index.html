@@ -39,45 +39,53 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       background-color: var(--primary-color);
       color: white;
       text-align: center;
-      padding: 2rem;
+      padding: clamp(20px, 5vw, 60px);
+      
     }
 
     .front-page img {
       height: 300px;
       margin-bottom: 1rem;
+      max-width: clamp(120px, 20vw, 200px);
+      height: auto;
+      margin-bottom: 20px;
     }
 
     .front-page h1 {
-      font-size: 2.9rem;
-      margin-bottom: 0.5rem;
+      font-size: clamp(24px, 5vw, 48px);
+      font-weight: bold;
+      margin-bottom: 16px;
       color: var(--accent-color);
     }
 
     .front-page p {
-      font-size: 1.0rem;
+      font-size: clamp(14px, 2vw, 20px);
       max-width: 600px;
       margin-top: 0.2rem;
-      margin-bottom: 1rem;
+      margin-bottom: 24px;
+      line-height: 1.4;
     }
 
     .front-page button {
       background-color: var(--accent-color);
       color: #060682;
       font-weight: bold;
-      padding: 0.75rem 2rem;
+      padding: clamp(8px, 2vw, 14px)clamp(16px, 4vw, 28px);
       border: none;
-      border-radius: 10px;
-      font-size: 1rem;
+      border-radius: 8px;
+      font-size: clamp(14px, 2vw, 18px);
       cursor: pointer;
-      transition: background-color 0.1s;
+      transition: transform 0.2s ease, background 0.2s ease-in;
+
     }
 
     .front-page button:hover {
       background-color: #a8a83b;
+      transform: scale(1.05);
     }
 
     .logo-container {
@@ -151,14 +159,32 @@
     .page-title {
       text-align: center;
       padding: 1.5rem 10rem 1.5rem 10rem;
+      justify-content: center; /* center horizontally */
+      align-items: center;
+      flex-shrink: 0;
     }
 
     .page-title h1 {
-      font-size: 2.0rem;
+      font-size: 2rem;
       color: white;
       margin-bottom: 0.15rem;
       background: #11447a;
       border-radius: 100px 100px 100px 100px;
+      }
+
+
+    @media (max-width: 768px) {
+      .page-title {
+        font-size: 14px;
+        padding: 6px 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-title {
+        font-size: 12px;
+        padding: 4px 8px;
+      }
     }
 
     .page-title p {
@@ -203,7 +229,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
+      font-size: large;
+     }
 
     .accordion-header:hover {
       background: #919ef8;
@@ -223,15 +250,27 @@
       margin-top: 10px;
     }
 
-     .card-buttons button {
-      padding: 6px 12px;
-      margin-right: 10px;
-      border: none;
-      border-radius: 4px 5px 3px 13px;
-      cursor: pointer;
-      background-color: #0066ff;
-      color: white
+    .card-buttons button {
+    padding: 6px 12px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px 5px 3px 13px;
+    cursor: pointer;
+    background-color: #0066ff;
+    color: white
     } 
+
+    .grade-horizontal {
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+    padding-bottom: 10px;
+    overflow-x: auto;
+    align-items: flex-start;
+    scrollbar-width: thin; 
+    scrollbar-color: #d3d3d4 transparent;
+    }
+
 
     .grade {
       margin-bottom: 1rem;
@@ -239,10 +278,16 @@
       background: #f9fafc;
       border: 1px solid #eee;
       border-radius: 4px 15px 4px 15px;
-    }
+      scroll-behavior: smooth;
+      overflow-x: auto;
+      flex: 0 0 auto;
+      white-space: nowrap;
+      flex-direction: row; 
+      }
 
     .grade h3 {
       margin: 0 0 0.5rem 0;
+      font-weight: 400;
     }
 
     button {
@@ -296,8 +341,13 @@
       text-decoration: underline;
     }
 
+    @media (max-width: 768px) {
+      .page-title h1 {
+        font-size: 1.5rem;
+      }
+    }
   </style>
-</head>
+ </head>
 <body>
 
   
@@ -351,13 +401,14 @@
       <p>Access and explore modules conveniently arranged by subject</p>
     </div>
 
-<section>
+<section class="py-5">
   <div class="accordion">
     <!-- English -->
-    <div class="accordion-item">
-      <div class="accordion-header">English <span>+</span></div>
+   <div class="accordion-item">
+    <div class="accordion-header"><strong>ENGLISH</strong> <span>+</span></div>
       <div class="accordion-content">
-        <div class="grade">
+        <div class="grade-horizontal">
+          <div class="grade"> 
           <h3>Grade 1</h3>
             <a href="grade1_english.pdf" target="_blank" class="view-btn">View PDF</a>
             <a href="grade1_english.pdf" download class="download-btn">Download</a>
@@ -368,7 +419,7 @@
             <a href="grade2_english.pdf" download class="download-btn">Download</a>
         </div>
         <div class="grade">
-          <h3>Grade 3</h3>
+          <h3>Grade 3</h3> 
           <a href="grade3_english.pdf" target="_blank" class="view-btn">View PDF</a>
           <a href="grade3_english.pdf" download class="download-btn">Download</a>
         </div>
@@ -407,13 +458,66 @@
           <a href="grade10_english.pdf" target="_blank" class="view-btn">View PDF</a>
           <a href="grade10_english.pdf" download class="download-btn">Download</a>
         </div>
-      </div>
+         <div class="grade">
+          <h3>Short Stories</h3>
+          <a href="https://www.clarkness.com/Reading%20files/Single%20Page%20Stories%20for%20First%20Graders/Beginning%20Reader%20Stories%20Level%2038.pdf?utm_source=chatgpt.com" target="_blank" class="view-btn">Read</a>
+        </div>
+        <div class="grade">
+          <h3>Learn-to-Read Books</h3>
+          <a href="https://teach.starfall.com/books?utm" target="_blank" class="view-btn">Explore</a>
+        </div>
+        <div class="grade">
+          <h3>Reading fluency Book</h3>
+          <a href="https://bookbot-web.pages.dev/#/" target="_blank" class="view-btn">Read Book 1</a>
+          <a href="https://bookbot-web.pages.dev/#/" target="_blank" class="view-btn">Read Book 2</a>
+          <a href="https://www.bookbotkids.com/free-books-for-kids?utm_source=chatgpt.com" target="_blank" class="view-btn">Read More</a>
+        </div>
+        <div class="grade">
+          <h3>The Tale of Peter Rabbit – Beatrix Potter</h3>
+          <a href="https://www.gutenberg.org/cache/epub/14838/pg14838-images.html" target="_blank" class="view-btn">Read</a>
+          <a href="https://www.youtube.com/watch?v=EuTlQCGxE5Y" target="_blank" class="view-btn">Watch</a>
+        </div>
+        <div class="grade">
+          <h3>The Project Gutenberg eBook</h3>
+          <a href="https://www.gutenberg.org/cache/epub/14838/pg14838-images.html" target="_blank" class="view-btn">Read</a>
+          <a href="https://www.gutenberg.org/cache/epub/32488/pg32488-images.html" target="_blank" class="view-btn">Read</a>
+          <a href="https://www.gutenberg.org/cache/epub/45/pg45-images.html" target="_blank" class="view-btn">Read</a>
+        </div>
+        <div class="grade">
+          <h3>Short Historical Story</h3>
+          <a href="https://www.gutenberg.org/cache/epub/18775/pg18775-images.html" target="_blank" class="view-btn">Read</a>
+        </div>
+        <div class="grade">
+          <h3>Adventure Novel</h3>
+          <a href="https://www.gutenberg.org/cache/epub/120/pg120-images.html" target="_blank" class="view-btn">Read</a>
+        </div>
+        <div class="grade">
+          <h3>Romeo and Juliet – William Shakespeare</h3>
+          <a href="https://www.gutenberg.org/cache/epub/1513/pg1513-images.html" target="_blank" class="view-btn">Read</a>
+          <a href="https://www.youtube.com/watch?v=SDNK8lT0lxs&t=4533s" target="_blank" class="view-btn">Watch</a>
+
+        </div>
+         <div class="grade">
+          <h3>Pride and Prejudice – Jane Austen</h3>
+          <a href="https://www.gutenberg.org/cache/epub/1342/pg1342-images.html" target="_blank" class="view-btn">Read</a>
+          <a href="https://www.youtube.com/watch?v=sZC6-u13-dM" target="_blank" class="view-btn">Watch</a>
+          <a href="https://www.youtube.com/watch?v=KJ-OYgKF4WQ" target="_blank" class="view-btn">Summary</a>
+
+        </div>
+         <div class="grade">
+          <h3>Frankenstein – Mary Shelley</h3>
+          <a href="https://www.gutenberg.org/cache/epub/84/pg84-images.html" target="_blank" class="view-btn">Read</a>
+          <a href="https://www.youtube.com/watch?v=XRppXdKDY_c" target="_blank" class="view-btn">Summary</a>
+        </div>
+        </div>
     </div>
+  </div>
 
     <!-- Math -->
     <div class="accordion-item">
-      <div class="accordion-header">Mathematics <span>+</span></div>
+     <div class="accordion-header"><strong>MATHEMATICS</strong><span>+</span></div>
       <div class="accordion-content">
+       <div class="grade-horizontal">
         <div class="grade">
           <h3>Grade 1</h3>
             <a href="grade1_math.pdf" target="_blank" class="view-btn">View PDF</a>
@@ -464,13 +568,35 @@
           <a href="grade10_math.pdf" target="_blank" class="view-btn">View PDF</a>
           <a href="grade10_math.pdf" download class="download-btn">Download</a>
         </div>
+        <div class="grade">
+          <h3>Khan Academy Kids – Basic Math</h3>
+          <a href="https://www.youtube.com/@KhanAcademyKids" target="_blank" class="view-btn">Watch on Youtube</a>
+        </div>
+        <div class="grade">
+          <h3>Numberblocks (BBC – fun counting & basic math) for Kids</h3>
+          <a href="https://www.youtube.com/@Numberblocks" target="_blank" class="view-btn">Watch on Youtube</a>
+        </div>
+        <div class="grade">
+          <h3>Math Antics: Basic Addition & Subtraction</h3>
+          <a href="https://www.youtube.com/@mathantics" target="_blank" class="view-btn">Watch on Youtube</a>
+        </div>
+        <div class="grade">
+          <h3>Visual Algebra & Geometry</h3>
+          <a href="https://www.youtube.com/@3blue1brown" target="_blank" class="view-btn">Watch on Youtube</a>
+        </div>
+        <div class="grade">
+          <h3>Essence of Linear Algebra / Trigonometry</h3>
+          <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" target="_blank" class="view-btn">Watch on Youtube</a>
+        </div>
       </div>
     </div>
+  </div>
 
     <!-- Science -->
     <div class="accordion-item">
-      <div class="accordion-header">Science <span>+</span></div>
+     <div class="accordion-header"><strong>SCIENCE</strong><span>+</span></div>
       <div class="accordion-content">
+       <div class="grade-horizontal">
         <div class="grade">
           <h3>Grade 1</h3>
             <a href="grade1_science.pdf" target="_blank" class="view-btn">View PDF</a>
@@ -521,13 +647,31 @@
           <a href="grade10_science.pdf" target="_blank" class="view-btn">View PDF</a>
           <a href="grade10_science.pdf" download class="download-btn">Download</a>
         </div>
+        <div class="grade">
+          <h3>Plant Life & Body Parts for Kids</h3>
+          <a href="https://www.youtube.com/@SciShowKids" target="_blank" class="view-btn">Watch on Youtube</a>
+        </div>
+        <div class="grade">
+          <h3>Forces, Motion, Energy</h3>
+          <a href="https://www.youtube.com/@physicsgirl" target="_blank" class="view-btn">Watch on Youtube</a>
+        </div>
+        <div class="grade">
+          <h3>Fun Science Explanations</h3>
+          <a href="https://www.youtube.com/@MinuteEarth" target="_blank" class="view-btn">Watch on Youtube</a>
+        </div>
+        <div class="grade">
+          <h3>Space, Physics, Biology</h3>
+          <a href="https://www.youtube.com/@kurzgesagt" target="_blank" class="view-btn">Watch on Youtube</a>
+          </div>
+        </div>
       </div>
-    </div>
+   </div> 
 
     <!-- Filipino -->
     <div class="accordion-item">
-      <div class="accordion-header">Filipino <span>+</span></div>
+     <div class="accordion-header"><strong>FILIPINO</strong><span>+</span></div>
       <div class="accordion-content">
+        <div class="grade-horizontal">
         <div class="grade">
           <h3>Grade 1</h3>
             <a href="grade1_filipino.pdf" target="_blank" class="view-btn">View PDF</a>
@@ -578,14 +722,36 @@
           <a href="grade10_filipino.pdf" target="_blank" class="view-btn">View PDF</a>
           <a href="grade10_filipino.pdf" download class="download-btn">Download</a>
         </div>
+        <div class="grade">
+          <h3>Alamat ng Pinya</h3>
+          <a href="https://www.youtube.com/watch?v=8H9-D3i7e0s" target="_blank" class="view-btn">Watch</a>
+        </div>
+        <div class="grade">
+          <h3>Florante at Laura</h3>
+          <a href="https://www.gutenberg.org/cache/epub/15845/pg15845-images.html" target="_blank" class="view-btn">Read</a>
+        </div>
+        <div class="grade">
+          <h3>Noli Me Tangere</h3>
+          <a href="https://www.gutenberg.org/cache/epub/20228/pg20228-images.html" target="_blank" class="view-btn">Read</a>
+        </div>
+        <div class="grade">
+          <h3>Ibong Adarna</h3>
+          <a href="https://www.youtube.com/watch?v=wsKngCLJFdM" target="_blank" class="view-btn">Watch Summary</a>
+        </div>
+        <div class="grade">
+          <h3>El Filibusterismo</h3>
+          <a href="https://www.gutenberg.org/cache/epub/47629/pg47629-images.html" target="_blank" class="view-btn">Read</a>
+        </div>
       </div>
     </div>
+  </div>
 
     <!-- ESP -->
     <div class="accordion-item">
-      <div class="accordion-header">Edukasyon sa Pagpapakatao (ESP) <span>+</span></div>
+     <div class="accordion-header"><strong>EDUKASYON SA PAGPAPAKATAO (ESP)</strong><span>+</span></div>
       <div class="accordion-content">
-        <div class="grade">
+        <div class="grade-horizontal">
+         <div class="grade">
           <h3>Grade 1</h3>
             <a href="grade1_esp.pdf" target="_blank" class="view-btn">View PDF</a>
             <a href="grade1_esp.pdf" download class="download-btn">Download</a>
@@ -635,13 +801,33 @@
           <a href="grade10_esp.pdf" target="_blank" class="view-btn">View PDF</a>
           <a href="grade10_esp.pdf" download class="download-btn">Download</a>
         </div>
+        <div class="grade">
+          <h3>Pagpapakatao</h3>
+          <a href="https://www.youtube.com/c/pagpapakataotv" target="_blank" class="view-btn">Watch</a>
+        </div>
+        <div class="grade">
+          <h3>Pangangalaga sa Sarili</h3>
+          <a href="https://www.youtube.com/watch?v=cUzErPfWbJM" target="_blank" class="view-btn">Watch</a>
+        </div>
+        <div class="grade">
+          <h3>Pagpapakita ng Paggalang</h3>
+          <a href="https://www.youtube.com/watch?v=5wlMiuSw-O8" target="_blank" class="view-btn">Watch</a>
+          <a href="https://www.youtube.com/watch?v=KK2FH24VMJk" target="_blank" class="view-btn">Watch</a>
+          <a href="https://www.youtube.com/watch?v=WXObMlbKu60" target="_blank" class="view-btn">Watch</a>
+        </div>
+        <div class="grade">
+          <h3>Ang Pagkukusa ng Makataong Kilos</h3>
+          <a href="https://web.facebook.com/watch/?v=955780628647773" target="_blank" class="view-btn">Watch</a>
+        </div>
       </div>
     </div>
+  </div>
 
     <!-- ICT -->
     <div class="accordion-item">
-      <div class="accordion-header">Information and Communication Technology (ICT) <span>+</span></div>
+     <div class="accordion-header"><strong>INFORMATION AND COMMUNICATION TECHNOLOGY (ICT)</strong><span>+</span></div>
       <div class="accordion-content">
+        <div class="grade-horizontal">
         <div class="grade">
           <h3>Grade 4</h3>
           <a href="grade4_ict.pdf" target="_blank" class="view-btn">View PDF</a>
@@ -676,6 +862,51 @@
           <h3>Grade 10</h3>
           <a href="grade10_ict.pdf" target="_blank" class="view-btn">View PDF</a>
           <a href="grade10_ict.pdf" download class="download-btn">Download</a>
+        </div>
+        <div class="grade">
+          <h3>Introduction to Computer</h3>
+          <a href="https://www.youtube.com/watch?v=XYk-A3IkKJk" target="_blank" class="view-btn">Watch</a>
+        </div>
+        <div class="grade">
+          <h3>Digital Citizenship</h3>
+          <a href="https://www.youtube.com/watch?v=uV3h09B486Q" target="_blank" class="view-btn">Watch</a>
+        </div>
+        <div class="grade">
+          <h3>Computer File System</h3>
+          <a href="https://www.youtube.com/watch?v=8yT4OLPFNQ0" target="_blank" class="view-btn">Watch</a>
+        </div>
+        <div class="grade">
+          <h3>Desktop Publishing</h3>
+          <a href="https://www.youtube.com/watch?v=ppJ2X08OFus" target="_blank" class="view-btn">Watch</a>
+          <a href="https://www.youtube.com/watch?v=EnU3RdjpxRE" target="_blank" class="view-btn">Watch</a>
+        </div>
+        <div class="grade">
+          <h3>Web Browser and Search Engine</h3>
+          <a href="https://www.youtube.com/watch?v=vZq13sgUPEI" target="_blank" class="view-btn">Watch</a>
+        </div>
+        <div class="grade">
+          <h3>Communicating and Collaborating Using ICT</h3>
+          <a href="https://www.youtube.com/watch?v=Y5mJtMw0zvc" target="_blank" class="view-btn">Watch</a>
+        </div>
+        <div class="grade">
+          <h3>Using ICT</h3>
+          <a href="https://www.youtube.com/watch?v=S9zTMMCqwXw" target="_blank" class="view-btn">Watch</a>
+        </div>
+        <div class="grade">
+          <h3>Desktop Publishing</h3>
+          <a href="https://www.youtube.com/watch?v=bUZBTQOH9JY" target="_blank" class="view-btn">Watch</a>
+        </div>
+        <div class="grade">
+          <h3>Watch More</h3>
+          <a href="https://www.youtube.com/watch?v=nhez4M2Xagk" target="_blank" class="view-btn">Components of a Computer System</a>
+          <a href="https://www.youtube.com/watch?v=1FGQB1_CbGY" target="_blank" class="view-btn">Performing Computer Operations</a>
+          <a href="https://www.youtube.com/watch?v=QksI1vAX0yo" target="_blank" class="view-btn">Exploring Tools and Equipment in ICT</a>
+          <a href="https://www.youtube.com/watch?v=d3JvrLwVblA" target="_blank" class="view-btn">ICT as a Tool in Online Marketing</a>
+          <a href="https://www.youtube.com/watch?v=86_c0jE5l3w" target="_blank" class="view-btn">Understanding Computers</a>
+          <a href="https://www.youtube.com/watch?v=qFjJDqempj4" target="_blank" class="view-btn">Types of Software and Operating System</a>
+          <a href="https://www.youtube.com/watch?v=0r_stw3eFKc" target="_blank" class="view-btn">Introduction to Information and Communication Technology</a>
+          <a href="https://www.youtube.com/watch?v=f71vnsrpGho" target="_blank" class="view-btn">Personal Entrepreneurial Competencies</a>
+          </div>
         </div>
       </div>
     </div>
@@ -737,4 +968,4 @@
     });
   </script>
  </body>
-</html>
+</html> 
