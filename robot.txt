@@ -1,3 +1,2 @@
 User-agent: *
-Allow: /
-Sitemap: https://cmjofficial.github.io/lyceedesanantonio-lms/sitemap.xml
+Disallow: /
